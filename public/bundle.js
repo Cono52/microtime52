@@ -19183,8 +19183,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  width: 100%;\n  height: 100vh;\n  overflow: hidden;\n  background-color: black;\n  font-family: \'Nunito\', sans-serif;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n'], ['\n  width: 100%;\n  height: 100vh;\n  overflow: hidden;\n  background-color: black;\n  font-family: \'Nunito\', sans-serif;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  color: white;\n  font-size: ', ';\n  width: 50%;\n'], ['\n  color: white;\n  font-size: ', ';\n  width: 50%;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n'], ['\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  width: 100%;\n  height: 100vh;\n  overflow: hidden;\n  background-color: black;\n  font-family: \'Nunito\', sans-serif;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n'], ['\n  width: 100%;\n  height: 100vh;\n  overflow: hidden;\n  background-color: black;\n  font-family: \'Nunito\', sans-serif;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  opacity: 0;\n  animation: ', ' 0.5s 0.1s ease-in forwards;\n  color: white;\n  font-size: ', ';\n  max-width: 30em;\n  min-width: 10em;\n  ', ';\n  \n\n  .code {\n    background-color: #2e2e2e;\n    padding: 0.5em;\n    border-radius: 6px;\n  }\n\n  @media (max-width: 420px) {\n    font-size: ', ';\n    max-width: 25em;\n    min-width: 8em;\n  }\n\n'], ['\n  opacity: 0;\n  animation: ', ' 0.5s 0.1s ease-in forwards;\n  color: white;\n  font-size: ', ';\n  max-width: 30em;\n  min-width: 10em;\n  ', ';\n  \n\n  .code {\n    background-color: #2e2e2e;\n    padding: 0.5em;\n    border-radius: 6px;\n  }\n\n  @media (max-width: 420px) {\n    font-size: ', ';\n    max-width: 25em;\n    min-width: 8em;\n  }\n\n']);
 
 var _react = __webpack_require__(2);
 
@@ -19198,14 +19199,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Container = _styledComponents2.default.div(_templateObject);
+var fadeIn = (0, _styledComponents.keyframes)(_templateObject);
 
-var TextContainer = _styledComponents2.default.div(_templateObject2, function (props) {
-  return props.big ? '1.45em' : '1em';
+var Container = _styledComponents2.default.div(_templateObject2);
+
+var TextContainer = _styledComponents2.default.div(_templateObject3, fadeIn, function (props) {
+  return props.big ? '1.55em' : '1em';
+}, function (props) {
+  return props.big ? 'text-align: center; font-weight: bold' : '';
+}, function (props) {
+  return props.big ? '1.35em' : '0.8em';
 });
 
 /* the main page for the index route of this app */
 var App = function App() {
+  var example = JSON.stringify({ "unix": 1517011200, "natural": "January 27, 2018" });
   return _react2.default.createElement(
     Container,
     null,
@@ -19215,7 +19223,7 @@ var App = function App() {
       _react2.default.createElement(
         'p',
         null,
-        'This is a unix time stamper microservice.'
+        'This is a unix timestamp microservice.'
       )
     ),
     _react2.default.createElement(
@@ -19228,13 +19236,23 @@ var App = function App() {
       ),
       _react2.default.createElement(
         'p',
-        null,
-        'https://microtime52.glitch.me/February 1 2017'
+        { className: 'code' },
+        'https://microtime52.glitch.me/January 27, 2018'
+      ),
+      _react2.default.createElement(
+        'p',
+        { className: 'code' },
+        'https://microtime52.glitch.me/1517011200'
       ),
       _react2.default.createElement(
         'p',
         null,
-        'https://microtime52.glitch.me/1485951634'
+        'Sample output:'
+      ),
+      _react2.default.createElement(
+        'p',
+        { className: 'code' },
+        example
       )
     )
   );
